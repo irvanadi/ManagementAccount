@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ManagementAccount</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="lupa_password">Lupa Password</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="register">Register</string>
+    <string name="add_data">Add Data</string>
+    <string name="update_data">Update Data</string>
+    <string name="delete_data">Delete Data</string>
+</resources>
