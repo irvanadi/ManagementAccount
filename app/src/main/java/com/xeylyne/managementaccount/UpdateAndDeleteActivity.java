@@ -35,6 +35,10 @@ public class UpdateAndDeleteActivity extends AppCompatActivity {
                 boolean result = dataHelper.updateData(position + 1, username.getText().toString(), password.getText().toString(), phone.getText().toString());
                 if (result){
                     Toast.makeText(UpdateAndDeleteActivity.this, "Data has been Updated", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(UpdateAndDeleteActivity.this, DashboardActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(UpdateAndDeleteActivity.this, "Error while Updating data", Toast.LENGTH_SHORT).show();
                 }
@@ -47,6 +51,9 @@ public class UpdateAndDeleteActivity extends AppCompatActivity {
                 boolean result = dataHelper.deleteData(position + 1);
                 if (result){
                     Toast.makeText(UpdateAndDeleteActivity.this, "Data Has Been Deleted", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(UpdateAndDeleteActivity.this, DashboardActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(UpdateAndDeleteActivity.this, "Error While Deleting Data", Toast.LENGTH_SHORT).show();
                 }

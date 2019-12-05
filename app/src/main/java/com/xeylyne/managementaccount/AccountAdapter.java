@@ -34,8 +34,8 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Account account = results.get(position);
-        holder.txtUsername.setText(account.getUsername());
-        holder.txtPhoneNumber.setText(account.getPhonenumber());
+        holder.txtUsername.setText("Account Username : " + account.getUsername());
+        holder.txtPhoneNumber.setText("Account Phone Number : " + account.getPhonenumber());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

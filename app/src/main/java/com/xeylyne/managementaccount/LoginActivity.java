@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     EditText username, password;
     DataHelper dataHelper;
@@ -19,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         username = findViewById(R.id.edUsername);
         password = findViewById(R.id.edPassword);
@@ -30,12 +28,12 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Cursor res = dataHelper.Select(username.getText().toString(), password.getText().toString());
+                Cursor res = dataHelper.Login(username.getText().toString(), password.getText().toString());
                 if (res.getCount() == 0){
-                    Toast.makeText(MainActivity.this, "Username/Password Salah", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Username/Password Salah", Toast.LENGTH_SHORT).show();
                 } else {
-//                    Toast.makeText(MainActivity.this, "Berhasil Login", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+//                    Toast.makeText(LoginActivity.this, "Berhasil Login", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                     startActivity(intent);
                 }
             }
@@ -44,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnRegis).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -52,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnLupas).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LupaPasswordActivity.class);
+                Intent intent = new Intent(LoginActivity.this, LupaPasswordActivity.class);
                 startActivity(intent);
             }
         });

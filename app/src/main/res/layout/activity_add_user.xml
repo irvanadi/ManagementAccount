@@ -5,36 +5,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:background="@drawable/bg_login"
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/edUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputUsername"
         app:layout_constraintTop_toTopOf="parent"
-        android:hint="@string/username"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/edPhoneNumber"
-        app:layout_constraintTop_toBottomOf="@id/edUsername"
+        <EditText
+            android:id="@+id/edUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/username"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/phone_number"/>
+        app:layout_constraintTop_toBottomOf="@id/txtInputUsername">
 
-    <EditText
-        android:id="@+id/edPassword"
+        <EditText
+            android:id="@+id/edPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone_number"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/edPhoneNumber"
-        android:inputType="textPassword"
-        android:hint="@string/password"/>
+        app:layout_constraintTop_toBottomOf="@id/txtInputPhoneNumber">
+
+        <EditText
+            android:id="@+id/edPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/password"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnAdd"
+        android:id="@+id/btnRegis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_data"
-        app:layout_constraintTop_toBottomOf="@id/edPassword"
+        android:text="@string/register"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/txtInputPassword"
+        android:background="@android:color/holo_orange_dark"
+        android:textColor="@android:color/white"
         />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

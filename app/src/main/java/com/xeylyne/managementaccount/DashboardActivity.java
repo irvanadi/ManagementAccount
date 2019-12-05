@@ -27,8 +27,8 @@ public class DashboardActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler);
         dataHelper = new DataHelper(this);
 
-        RecyclerView();
-        Load();
+        initRecyclerView();
+        PrepareData();
 
         findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,13 +40,13 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
 
-    private void RecyclerView() {
+    private void initRecyclerView() {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
-    private void Load() {
+    private void PrepareData() {
         results = dataHelper.getAllData();
         accountAdapter = new AccountAdapter(this, results);
         recyclerView.setAdapter(accountAdapter);

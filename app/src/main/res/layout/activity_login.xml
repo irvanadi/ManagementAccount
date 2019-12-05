@@ -4,20 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/bg_login"
+    android:padding="16dp"
+    tools:context=".LoginActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <EditText
             android:id="@+id/edUsername"
-            android:hint="@string/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/username"
             android:importantForAutofill="no"
             android:inputType="text" />
 
@@ -28,43 +30,56 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        app:passwordToggleEnabled="true"
         app:layout_constraintTop_toBottomOf="@id/txtInputUsername">
 
         <EditText
             android:id="@+id/edPassword"
-            android:hint="@string/password"
-            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:importantForAutofill="no"/>
+            android:hint="@string/password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_marginTop="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_light"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/holo_orange_dark"
+        android:textColor="@android:color/white"
         android:text="@string/login"
-        app:layout_constraintTop_toBottomOf="@id/txtInputPassword"/>
+        app:layout_constraintTop_toBottomOf="@id/txtInputPassword" />
 
-    <Button
+    <TextView
         android:id="@+id/btnRegis"
-        android:layout_marginTop="24dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_light"
+        android:layout_marginTop="24dp"
         android:text="@string/register"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"/>
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        android:clickable="true"
+        android:focusable="true"/>
 
-    <Button
+    <TextView
         android:id="@+id/btnLupas"
-        android:layout_marginTop="24dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_light"
+        android:layout_marginTop="24dp"
         android:text="@string/lupa_password"
-        app:layout_constraintTop_toBottomOf="@id/btnRegis"/>
-
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        android:clickable="true"
+        android:focusable="true"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

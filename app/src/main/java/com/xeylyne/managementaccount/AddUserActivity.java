@@ -32,6 +32,7 @@ public class AddUserActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(AddUserActivity.this, DashboardActivity.class);
                     startActivity(intent);
+                    finish();
 
                 } else {
                     Toast.makeText(AddUserActivity.this, "Data May Error While Insert", Toast.LENGTH_SHORT).show();

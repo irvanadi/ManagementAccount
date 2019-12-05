@@ -9,19 +9,18 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import java.net.IDN;
 import java.util.ArrayList;
 
 public class DataHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "managementAccount.db";
     public static final int DATABASE_VERSION = 2;
-    public static final String TABLE_NAME = "management_table";
+    public static final String TABLE_NAME = "account_table";
 
 
     public static final String COL_1 = "ID";
     public static final String COL_2 = "USERNAME";
-    public static final String COL_3 = "PASSOWRD";
+    public static final String COL_3 = "PASSWORD";
     public static final String COL_4 = "PHONENUMBER";
 
     public DataHelper(@Nullable Context context) {
@@ -32,7 +31,7 @@ public class DataHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NAME + "( ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "USERNAME TEXT UNIQUE," +
-                "PASSOWRD TEXT," +
+                "PASSWORD TEXT," +
                 "PHONENUMBER TEXT)");
     }
 
@@ -43,42 +42,42 @@ public class DataHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean Register(String name, String password, String phonenumber){
+    public boolean Register(String name, String password, String phonenumber) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, name);
         contentValues.put(COL_3, password);
         contentValues.put(COL_4, phonenumber);
         long result = db.insert(TABLE_NAME, null, contentValues);
-        if (result == -1){
-            Log.d("OnInsert", "GagalInsert");
+        if (result == -1) {
+            Log.d("onRegis", "GagalInsert");
             return false;
         } else {
-            Log.d("OnInsert", "Insert Success");
+            Log.d("onRegis", "Insert Success");
             return true;
         }
     }
 
-    public Cursor Select(String username, String password){
+    public Cursor Login(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + TABLE_NAME + " where USERNAME = '" + username + "' AND " + "PASSOWRD = '" + password + "'", null);
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME + " where USERNAME = '" + username + "' AND " + "PASSWORD = '" + password + "'", null);
         return res;
     }
 
-    public Cursor LupaPassword(String phoneNumber){
+    public Cursor LupaPassword(String phoneNumber) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select USERNAME, PASSOWRD from " + TABLE_NAME + " where PHONENUMBER = '" + phoneNumber + "'", null);
+        Cursor res = db.rawQuery("select USERNAME, PASSWORD from " + TABLE_NAME + " where PHONENUMBER = '" + phoneNumber + "'", null);
         return res;
     }
 
-    public ArrayList<Account> getAllData(){
+    public ArrayList<Account> getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<Account> accounts = new ArrayList<>();
         Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
-        if (res.getCount() == 0){
+        if (res.getCount() == 0) {
             Log.d("onGetAll", "DB Empty");
         } else {
-            if (res.moveToFirst()){
+            if (res.moveToFirst()) {
                 do {
                     Account account = new Account();
                     account.setUsername(res.getString(1));
@@ -91,7 +90,7 @@ public class DataHelper extends SQLiteOpenHelper {
         return accounts;
     }
 
-    public boolean updateData(int id, String username, String password, String phonenumber){
+    public boolean updateData(int id, String username, String password, String phonenumber) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, username);
@@ -101,7 +100,7 @@ public class DataHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean deleteData(int id){
+    public boolean deleteData(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, "ID = " + id, null);
         return true;
